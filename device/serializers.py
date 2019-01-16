@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Device, Manufacturer, DeviceModel
+from .models import Device, Manufacturer, DeviceModel, Vendor
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,9 @@ class ManufacturerSerializer(serializers.ModelSerializer):
 class DeviceModelSerializer(serializers.ModelSerializer):
     class Meta:
         model: DeviceModel
+        fields = '__all__'
+
+class VendorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model: Vendor
         fields = '__all__'
