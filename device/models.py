@@ -34,6 +34,7 @@ class Vendor(models.Model):
     address = models.CharField(max_length=250, blank=True, verbose_name=u'Address')
     postal_code = models.IntegerField(blank=True, verbose_name=u'Postal code')
     city = models.CharField(max_length=100, blank=True, verbose_name=u'City')
+    country = models.CharField(max_length=50, blank=True, verbose_name=u'Country')
     phone_number = models.CharField(max_length=30, blank=True, verbose_name=u'Phone number')
     website = models.CharField(max_length=128, blank=True, verbose_name=u'Website')
 
@@ -68,7 +69,7 @@ class Device(models.Model):
     last_modified = models.DateTimeField(verbose_name=u'Added', auto_now_add=True)
     status = models.CharField(max_length=16, choices=DEVICE_STATUSES, verbose_name=u'Status', default='new', db_index=True)
     ownership = models.CharField(max_length=16, choices=DEVICE_OWNERSHIP, verbose_name=u'Ownership', default='org', db_index=True)
-    warranty_until = models.DateField(verbose_name=u'Warranty until', blank=True)
+    warranty_until = models.DateField(verbose_name=u'Warranty until', blank=True, null=True)
 
     def __str__(self):
         return self.name + "(" + self.model + ")"
